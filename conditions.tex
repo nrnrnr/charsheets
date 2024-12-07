@@ -1,0 +1,41 @@
+\documentclass[letterpaper,landscape]{article}
+\usepackage[margin=1cm]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amssymb} % For checkmarks
+\usepackage{fontspec} % For font setting with xelatex
+
+% Set the main font to Libertine
+\setmainfont{Linux Libertine O}
+
+\begin{document}
+
+\renewcommand{\arraystretch}{1.5}
+\setlength{\tabcolsep}{5pt}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{@{}l>{\centering}p{3cm}>{\centering}p{3cm}>{\centering}p{3cm}>{\centering}p{3cm}>{\centering}p{3cm}p{6cm}@{}}
+\toprule
+\textbf{Condition} & \parbox{3cm}{\centering Speed \\ Reduced to 0} & \parbox{3cm}{\centering Disadvantage \\ on Attacks} & \parbox{3cm}{\centering Disadvantage \\ on Saves} & \parbox{3cm}{\centering Cannot \\ Take Actions} & \parbox{3cm}{\centering Cannot \\ React} & \textbf{Other Penalties} \\ \midrule
+Blinded            &                                              & \centering ✓                                  & \centering ✓                                 &                                        &                                     & Can't see \\ 
+Charmed            &                                              &                                              &                                             &                                        &                                     & Can't harm charmer \\ 
+Deafened           &                                              &                                              &                                             &                                        &                                     & Can't hear \\ 
+Exhaustion (Level 1) &                                            & ✓ (ability checks)                           &                                             &                                        &                                     & Penalty worsens by level \\ 
+Frightened         &                                              & \centering ✓                                  &                                             &                                        &                                     & Can't approach source \\ 
+Grappled           & \centering ✓                                &                                              &                                             &                                        &                                     & Ends if grappler incapacitated \\ 
+Incapacitated      &                                              &                                              &                                             & \centering ✓                          & \centering ✓                       & Can't take actions or reactions \\ 
+Invisible          &                                              &                                              &                                             &                                        &                                     & Attackers have disadvantage \\ 
+Paralyzed          & \centering ✓                                & \centering ✓                                  &                                             & \centering ✓                          & \centering ✓                       & Automatic crit in melee \\ 
+Petrified          & \centering ✓                                & \centering ✓                                  & \centering ✓                                & \centering ✓                          & \centering ✓                       & Resists all damage \\ 
+Poisoned           &                                              & \centering ✓                                  &                                             &                                        &                                     & Disadvantage on attacks \\ 
+Prone              &                                              & ✓ (ranged)                                    &                                             &                                        &                                     & Disadvantage on melee attacks \\ 
+Restrained         & \centering ✓                                & \centering ✓                                  &                                             &                                        &                                     & Attackers have advantage \\ 
+Stunned            & \centering ✓                                & \centering ✓                                  &                                             & \centering ✓                          & \centering ✓                       & Drops items \\ 
+Unconscious        & \centering ✓                                & \centering ✓                                  & \centering ✓                                & \centering ✓                          & \centering ✓                       & Automatic crit in melee \\ \bottomrule
+\end{tabular}
+\caption{D\&D 5e Conditions and Their Penalties}
+\label{tab:conditions}
+\end{table}
+
+\end{document}
