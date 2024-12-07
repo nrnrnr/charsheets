@@ -1,37 +1,58 @@
-\documentclass[letterpaper,landscape,12pt]{article}
+\documentclass[12pt,letterpaper,landscape]{article}
 \usepackage[margin=1cm]{geometry}
 \usepackage{booktabs}
 \usepackage{amssymb} % For checkmarks
 \usepackage{fontspec} % For font setting with xelatex
+\usepackage[table]{xcolor} % For row colors
 
 % Set the main font to STIX
 \setmainfont{STIX}
 
+% Define a light pastel beige color
+\definecolor{beige}{RGB}{245, 245, 220}
+
 \begin{document}
 
+% Restore previous spacing
 \renewcommand{\arraystretch}{1.5}
-\setlength{\tabcolsep}{3pt} % Reduce padding between columns for compactness
+\setlength{\tabcolsep}{3pt}
 
 \begin{table}[h!]
 \centering
 \begin{tabular}{@{}l c c c c c c l@{}}
 \toprule
-\textbf{Condition} & \parbox[t]{1.5cm}{\centering Speed \\ Reduced to 0} & \parbox[t]{2.5cm}{\centering Attacks \\ by Creature} & \parbox[t]{2.5cm}{\centering Attacks \\ Against Creature} & \parbox[t]{1.5cm}{\centering Disadvantage \\ on Saves} & \parbox[t]{1.5cm}{\centering Cannot \\ Take Actions} & \parbox[t]{1.5cm}{\centering Cannot \\ React} & \textbf{Other Penalties} \\ \midrule
-Blinded            &                                              & \parbox{2.5cm}{\centering disadvantage}          & \parbox{2.5cm}{\centering advantage}           & ✓                                   &                                        &                                     & Can't see \\ 
-Charmed            &                                              &                                                &                                              &                                     &                                        &                                     & Can't harm charmer \\ 
-Deafened           &                                              &                                                &                                              &                                     &                                        &                                     & Can't hear \\ 
-Exhaustion (Level 1) &                                            & \parbox{2.5cm}{\centering disadvantage \\ (ability checks)} &                                  &                                     &                                        &                                     & Penalty worsens by level \\ 
-Frightened         &                                              & \parbox{2.5cm}{\centering disadvantage}          &                                              &                                     &                                        &                                     & Can't approach source \\ 
-Grappled           & ✓                                            &                                                &                                              &                                     &                                        &                                     & Ends if grappler incapacitated \\ 
-Incapacitated      &                                              &                                                & \parbox{2.5cm}{\centering advantage}           &                                     & ✓                                      & ✓                                   & Can't take actions or reactions \\ 
-Invisible          &                                              & \parbox{2.5cm}{\centering advantage}             & \parbox{2.5cm}{\centering disadvantage}        &                                     &                                        &                                     & Attackers have disadvantage \\ 
-Paralyzed          & ✓                                            &                                                & \parbox{2.5cm}{\centering advantage}           &                                     & ✓                                      & ✓                                   & Automatic crit in melee \\ 
-Petrified          & ✓                                            &                                                & \parbox{2.5cm}{\centering advantage}           & ✓                                   & ✓                                      & ✓                                   & Resists all damage \\ 
-Poisoned           &                                              & \parbox{2.5cm}{\centering disadvantage}          &                                              &                                     &                                        &                                     & Disadvantage on attacks \\ 
-Prone              &                                              & \parbox{2.5cm}{\centering disadvantage \\ (ranged)} & \parbox{2.5cm}{\centering advantage}           &                                     &                                        &                                     & Disadvantage on melee attacks \\ 
-Restrained         & ✓                                            & \parbox{2.5cm}{\centering disadvantage}          & \parbox{2.5cm}{\centering advantage}           &                                     &                                        &                                     & Attackers have advantage \\ 
-Stunned            & ✓                                            &                                                & \parbox{2.5cm}{\centering advantage}           &                                     & ✓                                      & ✓                                   & Drops items \\ 
-Unconscious        & ✓                                            &                                                & \parbox{2.5cm}{\centering advantage}           & ✓                                   & ✓                                      & ✓                                   & Automatic crit in melee \\ \bottomrule
+\textbf{Condition} & \parbox[t]{1.5cm}{\centering Speed \\ Reduced to 0} 
+                   & \parbox[t]{2.5cm}{\centering Attacks \\ by Creature} 
+                   & \parbox[t]{2.5cm}{\centering Attacks \\ Against Creature} 
+                   & \parbox[t]{1.5cm}{\centering Disadvantage \\ on Saves} 
+                   & \parbox[t]{1.5cm}{\centering Cannot \\ Take Actions} 
+                   & \parbox[t]{1.5cm}{\centering Cannot \\ React} 
+                   & \textbf{Other Penalties} \\ \midrule
+\rowcolor{beige}
+Blinded            &            & disadvantage   & advantage    & ✓          &               &               & Can't see \\ 
+Charmed            &            &                &              &            &               &               & Can't harm charmer \\ 
+\rowcolor{beige}
+Deafened           &            &                &              &            &               &               & Can't hear \\ 
+Exhaustion (Level 1) &          & \parbox{2.5cm}{\centering disadvantage \\ (ability checks)} 
+                                   &              &            &               &               & Penalty worsens by level \\ 
+\rowcolor{beige}
+Frightened         &            & disadvantage   &              &            &               &               & Can't approach source \\ 
+Grappled           & ✓          &                &              &            &               &               & Ends if grappler incapacitated \\ 
+\rowcolor{beige}
+Incapacitated      &            &                & advantage    &            & ✓             & ✓             & Can't take actions or reactions \\ 
+Invisible          &            & advantage      & disadvantage &            &               &               & Attackers have disadvantage \\ 
+\rowcolor{beige}
+Paralyzed          & ✓          &                & advantage    &            & ✓             & ✓             & Automatic crit in melee \\ 
+Petrified          & ✓          &                & advantage    & ✓          & ✓             & ✓             & Resists all damage \\ 
+\rowcolor{beige}
+Poisoned           &            & disadvantage   &              &            &               &               & Disadvantage on attacks \\ 
+Prone              &            & \parbox{2.5cm}{\centering disadvantage \\ (ranged)} 
+                                   & advantage    &            &               &               & Disadvantage on melee attacks \\ 
+\rowcolor{beige}
+Restrained         & ✓          & disadvantage   & advantage    &            &               &               & Attackers have advantage \\ 
+Stunned            & ✓          &                & advantage    &            & ✓             & ✓             & Drops items \\ 
+\rowcolor{beige}
+Unconscious        & ✓          &                & advantage    & ✓          & ✓             & ✓             & Automatic crit in melee \\ \bottomrule
 \end{tabular}
 \caption{D\&D 5e Conditions and Their Penalties}
 \label{tab:conditions}
