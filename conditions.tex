@@ -7,32 +7,44 @@
 
 % Set the main font to STIX
 \setmainfont{STIX}
+\setsansfont{Arial}
 
 % Define a light pastel beige color
 \definecolor{beige}{RGB}{245, 245, 220}
 
-\newcommand\pb[2][2.5cm]{\parbox[t]{#1}{\centering #2}}
+\newcommand\pb[2][2.5cm]{\unskip\noindent\parbox[t]{#1}{\centering #2\strut}}
+\newcommand\pbl[2][2.5cm]{\unskip\noindent\parbox[t]{#1}{\raggedright #2\strut}}
+
+\pagestyle{empty}
 
 \begin{document}
 
 % Restore previous spacing
-\renewcommand{\arraystretch}{1.5}
-\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.6}
+\setlength{\tabcolsep}{8pt}
 
-\begin{table}[h!]
-\centering
-\begin{tabular}{@{}l c c c c c l@{}}
+
+
+\begin{center}
+
+\textbf{\LARGE D\&D Conditions}
+
+\bigskip
+
+\sffamily
+\begin{tabular}{@{}l l l l c c l@{}}
 \toprule
-\textbf{Condition} & \parbox[t]{2.5cm}{\centering Attacks} 
-                   & \parbox[t]{2.5cm}{\centering Attacks \\ Against} 
-                   & \parbox[t]{2.5cm}{\centering Ability Checks} 
-                   & \parbox[t]{1.5cm}{\centering Actions {\&} Reactions} 
-                   & \parbox[t]{1.5cm}{\centering Movement} 
-                   & \textbf{Other Penalties} \\ \midrule
+Condition
+                   & \multicolumn1{c}{\parbox[t]{2.5cm}{\centering Attacks}}
+                   & \multicolumn1{c}{\parbox[t]{2.5cm}{\centering Attacks \\ Against}}
+                   & \multicolumn1{c}{\parbox[t]{2.5cm}{\centering Ability Checks}}
+                   & \multicolumn1{c}{\parbox[t]{1.9cm}{\centering Actions~{\&}\\ Reactions\strut}}
+                   & \multicolumn1{c}{\parbox[t]{2.0cm}{\centering Movement}}
+                   & \multicolumn1{c}{Also}\\ \midrule
 \rowcolor{white}
-Blinded            & Disadvantage   & Advantage    &  Fails sight   &               &                       & Can't see \\ 
+ Blinded            & Disadvantage   & Advantage    &  Fails sight   &               &                       & Can't see \\ 
 \rowcolor{beige}
-Charmed            & \pb{Forbidden vs charmer} &              &  \pb{Charmer advantage on social} &               &                       & Can't harm charmer \\ 
+Charmed            & \pbl{Forbidden vs charmer} &              &  \pbl{Charmer adv.\ (social)} &               &                       & Can't harm charmer \\ 
 \rowcolor{white}
 Deafened           &                &              &    Fails hearing                        &               &                       & Can't hear \\ 
 \rowcolor{beige}
@@ -49,12 +61,12 @@ Invisible          & Advantage      & Disadvantage &                            
 \rowcolor{white}
 Paralyzed           & Forbidden      & Advantage    & Fails Str, Dex            & Forbidden      & Immobile              & Automatic crit in melee \\ 
 \rowcolor{beige}
-Petrified          & Forbidden      &  \pb{Advantage (resists~all)}   
+Petrified          & Forbidden      &  \pbl{Advantage (resists~all)}   
                                                       &  Fails Str, Dex                          & Forbidden             &  Immobile                     &  Immune to poison, disease\\ 
 \rowcolor{white}
 Poisoned           & Disadvantage   &              &  Disadvantage              &               &                       &  \\ 
 \rowcolor{beige}
-Prone              & Disadvantage & \pb{Advantage Melee\\Disadvantage Ranged} 
+Prone              & Disadvantage & \pbl[2.8cm]{Adv.~(melee)\\\mbox{}\rlap{Disadv.~(ranged)}} 
                                                    &                            &               &  Crawling                     &  \\ 
 \rowcolor{white}
 Restrained         & Disadvantage   & Advantage    & Disadvantage Dex         &               & Immobile            & Attackers have Advantage \\ 
@@ -64,8 +76,5 @@ Stunned            & Forbidden      & Advantage    & Fails Str, Dex           & 
 Unconscious        & Forbidden      & Advantage    & Fails Str, Dex           & Forbidden             & Immobile              & Automatic crit in melee \\ 
 \bottomrule
 \end{tabular}
-\caption{D\&D 5e Conditions and Their Penalties}
-\label{tab:conditions}
-\end{table}
-
+\end{center}
 \end{document}
