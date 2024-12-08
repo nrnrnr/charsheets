@@ -19,40 +19,46 @@
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{@{}l c c c c c c l@{}}
+\begin{tabular}{@{}l c c c c c l@{}}
 \toprule
-\textbf{Condition} & \parbox[t]{1.5cm}{\centering Speed \\ Reduced to 0} 
-                   & \parbox[t]{2.5cm}{\centering Attacks \\ by Creature} 
+\textbf{Condition} & \parbox[t]{2.5cm}{\centering Attacks \\ by Creature} 
                    & \parbox[t]{2.5cm}{\centering Attacks \\ Against Creature} 
-                   & \parbox[t]{1.5cm}{\centering Disadvantage \\ on Saves} 
+                   & \parbox[t]{2.5cm}{\centering Saving \\ Throws} 
                    & \parbox[t]{1.5cm}{\centering Cannot \\ Take Actions} 
-                   & \parbox[t]{1.5cm}{\centering Cannot \\ React} 
+                   & \parbox[t]{1.5cm}{\centering Movement} 
                    & \textbf{Other Penalties} \\ \midrule
+\rowcolor{white}
+Blinded            & disadvantage   & advantage    & Dex (disadvantage)         &               &                       & Can't see \\ 
 \rowcolor{beige}
-Blinded            &            & disadvantage   & advantage    & ✓          &               &               & Can't see \\ 
-Charmed            &            &                &              &            &               &               & Can't harm charmer \\ 
+Charmed            &                &              &                            &               &                       & Can't harm charmer \\ 
+\rowcolor{white}
+Deafened           &                &              &                            &               &                       & Can't hear \\ 
 \rowcolor{beige}
-Deafened           &            &                &              &            &               &               & Can't hear \\ 
-Exhaustion (Level 1) &          & \parbox{2.5cm}{\centering disadvantage \\ (ability checks)} 
-                                   &              &            &               &               & Penalty worsens by level \\ 
+Exhaustion (Level 1) & \parbox{2.5cm}{\centering disadvantage \\ (ability checks)} 
+                                   &              &                            &               &                       & Penalty worsens by level \\ 
+\rowcolor{white}
+Frightened         & disadvantage   &              &                            &               &                       & Can't approach source \\ 
 \rowcolor{beige}
-Frightened         &            & disadvantage   &              &            &               &               & Can't approach source \\ 
-Grappled           & ✓          &                &              &            &               &               & Ends if grappler incapacitated \\ 
+Grappled           &                &              &                            &               & restricted            & Ends if grappler incapacitated \\ 
+\rowcolor{white}
+Incapacitated      & forbidden      & advantage    &                            & ✓             &                       & Can't take actions or reactions \\ 
 \rowcolor{beige}
-Incapacitated      &            &                & advantage    &            & ✓             & ✓             & Can't take actions or reactions \\ 
-Invisible          &            & advantage      & disadvantage &            &               &               & Attackers have disadvantage \\ 
+Invisible          & advantage      & disadvantage &                            &               &                       & Attackers have disadvantage \\ 
+\rowcolor{white}
+Paralyzed          & forbidden      & advantage    & Str, Dex (fails)           & ✓             & immobile              & Automatic crit in melee \\ 
 \rowcolor{beige}
-Paralyzed          & ✓          &                & advantage    &            & ✓             & ✓             & Automatic crit in melee \\ 
-Petrified          & ✓          &                & advantage    & ✓          & ✓             & ✓             & Resists all damage \\ 
+Petrified          & forbidden      & advantage    & Str, Dex (fails)           & ✓             & immobile              & Resists all damage \\ 
+\rowcolor{white}
+Poisoned           & disadvantage   &              &                            &               &                       & Disadvantage on attacks \\ 
 \rowcolor{beige}
-Poisoned           &            & disadvantage   &              &            &               &               & Disadvantage on attacks \\ 
-Prone              &            & \parbox{2.5cm}{\centering disadvantage \\ (ranged)} 
-                                   & advantage    &            &               &               & Disadvantage on melee attacks \\ 
+Prone              & \parbox{2.5cm}{\centering disadvantage \\ (ranged)} 
+                                   & advantage    &                            &               &                       & Disadvantage on melee attacks \\ 
+\rowcolor{white}
+Restrained         & disadvantage   & advantage    & Dex (disadvantage)         &               & restricted            & Attackers have advantage \\ 
 \rowcolor{beige}
-Restrained         & ✓          & disadvantage   & advantage    &            &               &               & Attackers have advantage \\ 
-Stunned            & ✓          &                & advantage    &            & ✓             & ✓             & Drops items \\ 
-\rowcolor{beige}
-Unconscious        & ✓          &                & advantage    & ✓          & ✓             & ✓             & Automatic crit in melee \\ \bottomrule
+Stunned            & forbidden      & advantage    & Str, Dex (fails)           & ✓             & immobile              & Drops items \\ 
+\rowcolor{white}
+Unconscious        & forbidden      & advantage    & Str, Dex (fails)           & ✓             & immobile              & Automatic crit in melee \\ \bottomrule
 \end{tabular}
 \caption{D\&D 5e Conditions and Their Penalties}
 \label{tab:conditions}
