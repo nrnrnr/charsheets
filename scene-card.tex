@@ -1,0 +1,75 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[margin=0.6in]{geometry}   % keep everything on a single page
+\usepackage{array,tabularx,xcolor}
+\renewcommand\arraystretch{1.2}
+
+%%%%% Usage notes
+%%%%%
+%%%%%  Compile: pdflatex scene-card.tex (twice for good measure)
+%%%%%  
+%%%%%  Adjust area heights: change the [10em] arguments; e.g. [14em] for more writing space.
+%%%%%  
+%%%%%  Change widths: tweak 0.16\linewidth (label cells) and 0.09\linewidth
+%%%%%  (blank cells) in the \newcolumntype directives.
+
+
+% Fixed‑width label column, blank‑cell column, and a stretch column
+\newcolumntype{L}{>{\raggedright\arraybackslash\bfseries}p{0.16\linewidth}}
+\newcolumntype{B}{p{0.09\linewidth}}
+\newcolumntype{X}{>{\raggedright\arraybackslash}X}
+
+\begin{document}
+\begin{center}
+  {\Large\scshape Scene Card}
+\end{center}
+
+% ------------------------------------------------------------------
+%  Top meta rows
+\begin{tabularx}{\textwidth}{|L|B|L|B|L|B|L|B|}
+\hline
+MS/XP Earned  &  & Keywords            &  & Lure In &  & Lure Out &  \\ \hline
+MS/XP Budget  &  & Motif \& Symbolism  &  & Lure In &  & Lure Out &  \\ \hline
+\end{tabularx}
+
+\vspace{1em}
+
+% ------------------------------------------------------------------
+%  Objective description block
+\begin{tabularx}{\textwidth}{|L|X|}
+\hline
+Objective Description &
+  \emph{The Challenge, The Interactions, The Dialogue, The Action, The Purpose}\\[10em] \hline
+\end{tabularx}
+
+\vspace{0.4em}
+
+% ------------------------------------------------------------------
+%  Sensory description block
+\begin{tabularx}{\textwidth}{|L|X|}
+\hline
+Sensory Description &
+  \emph{Lighting, Sounds, Visual, Smells, Tastes, Textures, Feel, Tension, Mood}\\[10em] \hline
+\end{tabularx}
+
+\vspace{0.4em}
+
+% ------------------------------------------------------------------
+%  Physical description block
+\begin{tabularx}{\textwidth}{|L|X|}
+\hline
+Physical Description &
+  \emph{Shape, Color, Materials, Length, Width, Height, Depth, Fixtures, Furnishings}\\[10em] \hline
+\end{tabularx}
+
+\vspace{1em}
+
+% ------------------------------------------------------------------
+%  Action / detail grid
+\begin{tabularx}{\textwidth}{|L|B|L|B|L|B|L|B|}
+\hline
+Plan              & & Combat?       & & Setback & & Hints  & \\ \hline
+Ploy              & & Resource Use  & & Objects & & Clues  & \\ \hline
+Goal | Objective  & & Minions       & & Lore    & & Hoard  & \\ \hline
+\end{tabularx}
+
+\end{document}
