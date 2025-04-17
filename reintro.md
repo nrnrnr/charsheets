@@ -45,7 +45,11 @@ Combining a symbol with armor:
 And here's one where the unique distinguishing feature could be part of the
 physical description, but I've written it separately.
 
-> Sparrowhawk is a tall, stooped man of middle years.  His dark skin marks him as a native of Gont.  He is wearing a dark robe, and in one hand he carries a long staff---clearly a magician's tool, not a fighting weapon.  He also wears a small knife at his belt.  He bears no symbols or insignia.  His face would appear friendly, except it is horribly disfigured by a large scar that looks like claw marks.  In the last session we learned that he scan speak to dragons---and that dragons respect him enough to speak back.
+> Sparrowhawk is a tall, stooped man in his late middle years.  His dark skin marks him as a native of Gont.  He is wearing a dark robe, and in one hand he carries a long staff---clearly a magician's tool, not a fighting weapon.  He also wears a small knife at his belt.  He bears no symbols or insignia.  His face would appear friendly, except it is horribly disfigured by a large scar that looks like claw marks.  In the last session we learned that he scan speak to dragons---and that dragons respect him enough to speak back.
+
+One more:
+
+> Rupert is a human male in his early 40s, just a few inches taller than average.  He has a large moon face, over which he wears small round glasses.  He is wearing a gray three-piece suit and no other armor, and in both hands he carries a lightweight crossbow.  He's not displaying any insignia, but the tweed fabric of his suit is a common symbol of scholarship.  Although he's a large man, he has no physical presence whatsoever.  In the last session we learned that he is very obedient to those placed in authority over him, even when what they are doing is immoral an wrong.
 
 </article>
 
