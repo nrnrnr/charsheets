@@ -129,6 +129,13 @@ The `charsheet.sty` package provides:
 - Verify template files exist in the templates directory (default: current directory)
 - LaTeX compilation errors often indicate missing packages or malformed macro calls
 
+## Markdown output
+
+We'll be using Pandoc Markdown with HTML extensions.  Outputs should include a title using the opening `%` sign, and the body should be wrapped in <article>...</article>, which will provide a hook for CSS.
+
+The Markdown should include a Pandoc metadata block with the `article` and `body` tags from `/home/nr/cs/106/server/www/course.css`.
+
+
 
 # Goals to extend the system
 
@@ -147,6 +154,11 @@ Our current goals are to extend the system to make it more easily usable by othe
     - The way keys are used in the template file `caster.tex`.  This file in particular is the source for determining what keys are actually used or optional.
     
  2. A quick-start guide to the use of the YAML.  This quick-start guide should cover the keys necessary to create a character sheet like `zanogh.pdf` or `miriel.pdf`, and the order of explanation should parallel the order in which elements appear on those sheets.  The colored backgrounds should be mentioned, and all keys with the same colored background should be dealt with together as a group.  File `caster.tex` may also be of help putting together this guide; it is the source from which both `zanogh.pdf` and `miriel.pdf` are made (together with their corresponding *.yaml files).
+
+    Each relevant section in the quick-start guide should have the background color corresponding to the section in the character sheet.  This effect should be achieved by wrapping the section body (but not the header) in a `div` element with the relevant tags ("equipment", "magic," and so on).  Those divs should be given a background color using CSS placed in a Pandoc metadata block.
+
+    Whenever you update QUICKSTART.md, please run `pandoc -s -o /tmp/q.html QUICKSTART.md`.
+
  
  3. A web form making it easy for people to create a character sheet without resulting to the YAML.  The structure of that form should resemble the structure of the PDF character sheets, and likely the color scheme as well.  Some CSS will be required. The web form should include buttons to save the contents as a yaml file and to populate the form from a yaml file.
 
