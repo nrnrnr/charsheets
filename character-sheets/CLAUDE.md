@@ -181,6 +181,7 @@ Our current goals are to extend the system to make it more easily usable by othe
 - **Server setup**: Can assume full LaTeX toolchain (pdflatex, lua5.1, lyaml) available on server
 
 ### Web Service Architecture Recommendations
+- The form editor should be decoupled from the character-sheet generator.  It should be possible to get a PDF character sheet by sending a single POST request to a known URL.
 - Keep the web service simple - direct shell execution of `charsheet` script should work
 - Consider basic file upload/download handling for YAML files
 - PDF generation can be synchronous (direct response) given the speed of LaTeX compilation
