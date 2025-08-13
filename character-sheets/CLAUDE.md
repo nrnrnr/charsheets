@@ -180,6 +180,17 @@ Our current goals are to extend the system to make it more easily usable by othe
 - **Web framework**: Minimize dependencies, avoid complex frameworks if possible
 - **Server setup**: Can assume full LaTeX toolchain (pdflatex, lua5.1, lyaml) available on server
 
+How to handle the magic section:
+
+  - An empty sheet or a sheet with no magic should just show the header "Magic (click to open)."  Clicking on it should open.
+  
+  - Spells should be segregated by section.
+
+  - Each section should be headed either "Cantrips" or "Level N spells (k slots)", where the N is fixed for each level but the k can be filled in by the user in a small textbox (just one digit, please).
+
+  - Initially no empty sections should be shown.  And at the end of the last section there should be a box "open level N+1 spells," where "N+1" is as appropriate.  When opened, this section will be empty, and should be succeeded by a button to open level N+2 spells, and so on up through level 9.  There is no level 10 or beyond.
+  
+
 ### Web Service Architecture Recommendations
 - The form editor should be decoupled from the character-sheet generator.  It should be possible to get a PDF character sheet by sending a single POST request to a known URL.
 - Keep the web service simple - direct shell execution of `charsheet` script should work
