@@ -122,6 +122,10 @@ The `charsheet.sty` package provides:
 - **pdflatex** - LaTeX compilation (from TeX Live)
 - **Required LaTeX packages**: tikz, times, xcolor, colortbl, tabularx, booktabs, calc, etc.
 
+## HTML and CSS
+
+Never use `nth-child` in CSS.  At need, invent a new class and label the child.
+
 ## Common Troubleshooting
 
 - Ensure all YAML files use double quotes for keys with spaces
