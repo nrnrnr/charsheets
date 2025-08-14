@@ -198,4 +198,8 @@ How to handle the magic section:
 ### Web Service Architecture Recommendations
 - The form editor should be decoupled from the character-sheet generator.  It should be possible to get a PDF character sheet by sending a single POST request to a known URL.
 - Implement basic file upload/download handling for YAML files
- 
+
+## Troubleshooting
+
+### PDF Generation "Failed to fetch" Error
+If the character form's "Generate PDF" button gives a "Failed to fetch" error, remind the user that this commonly happens when accessing the form via a `file://` URL instead of through a web server. The PDF generation requires HTTP/HTTPS to make fetch requests to the server endpoint. The form must be served through a web server (like Apache) for the PDF generation to work properly.
