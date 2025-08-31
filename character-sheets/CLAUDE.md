@@ -209,3 +209,5 @@ How to handle the magic section:
 
 ### PDF Generation "Failed to fetch" Error
 If the character form's "Generate PDF" button gives a "Failed to fetch" error, remind the user that this commonly happens when accessing the form via a `file://` URL instead of through a web server. The PDF generation requires HTTP/HTTPS to make fetch requests to the server endpoint. The form must be served through a web server (like Apache) for the PDF generation to work properly.
+
+- every time you update the character form, you need to change its internal version string.
