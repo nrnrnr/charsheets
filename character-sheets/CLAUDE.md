@@ -184,6 +184,12 @@ Our current goals are to extend the system to make it more easily usable by othe
 - **Web framework**: Minimize dependencies, avoid complex frameworks if possible
 - **Server setup**: Can assume full LaTeX toolchain (pdflatex, lua5.1, lyaml) available on server
 
+### Web Form Changes
+
+The character-form.html web form generates YAML using separate `CLASS` and `LEVEL` fields rather than the combined `"CLASS & LEVEL"` field approach found in existing YAML files. This provides better form usability with dropdowns and number inputs.
+
+When loading existing YAML files that use `"CLASS & LEVEL"`, the form will parse this into separate fields. When saving, it always uses the separate `CLASS` and `LEVEL` format.
+
 How to handle the magic section:
 
   - An empty sheet or a sheet with no magic should just show the header "Magic (click to open)."  Clicking on it should open.
