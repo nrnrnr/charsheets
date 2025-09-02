@@ -173,9 +173,11 @@ The Markdown should include a Pandoc metadata block with the `article` and `body
  1. Update YAML.md and QUICKSTART.md.  If uncertain of examples for
     QUICKSTART.md, ask the user where to find an example.
 
- 2. Ask the user whether he wants to add a rendering to `caster.tex`.
+ 2. Add a declaration of the field to `charsheet.sty`
 
- 3. Ask the user whether to add support for the field in `character-form.html`.
+ 3. Ask the user whether he wants to add a rendering to `caster.tex`.
+
+ 4. Ask the user whether to add support for the field in `character-form.html`.
 
 
 ### Web Form Changes
