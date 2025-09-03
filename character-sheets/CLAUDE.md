@@ -180,6 +180,18 @@ The Markdown should include a Pandoc metadata block with the `article` and `body
  4. Ask the user whether to add support for the field in `character-form.html`.
 
 
+### Web form version markers
+
+Every time `character-form.html` changes, its internal "Version"
+string needs to be updated.  Our convention is to name each version
+after a vegetable or other food category.  The next version gets a new
+vegetable with its initial letter advancing by one letter of the
+alphabet.  For example: eggplant could be followed by fennel which
+could be followed by garlic.  If Claude can't think of an appropriate
+food it is OK to skip a difficult letter like X or Z.
+
+
+
 ### Web Form Changes
 
 The character-form.html web form generates YAML using separate `CLASS` and `LEVEL` fields rather than the combined `"CLASS & LEVEL"` field approach found in existing YAML files. This provides better form usability with dropdowns and number inputs.
