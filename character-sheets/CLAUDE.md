@@ -160,7 +160,11 @@ The Markdown should include a Pandoc metadata block with the `article` and `body
     a means of creating a character sheet by filling in the form,
     without known the YAML.  This form includes a button that forwards
     YAML to a web service of my design.  The form needs only to trust
-    the server's response, complete with headers.  It must never try to capture or massage the server's response.  Let the browser take care of it.
+    the server's response, complete with headers.  It must never try
+    to capture or massage the server's response.  Let the browser take
+    care of it.
+    
+    Also, the form must send the YAML data raw, not as a parameter.
 
 ### Steps 3-4 Implementation Details
 
