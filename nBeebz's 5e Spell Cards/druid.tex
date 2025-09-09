@@ -1,0 +1,160 @@
+\documentclass{article}
+\usepackage[margin=0.5cm,head=0pt,foot=0pt]{geometry}
+\pagestyle{empty}
+\thispagestyle{empty}
+\parindent=0pt
+\usepackage{graphicx}
+
+\RequirePackage{suffix}
+
+\setlength\fboxsep{5pt}
+
+\newcommand\card[1]{{\includegraphics[width=0.31\hsize]{Spell Cards/#1.png}}}
+\renewcommand\card[1]{{\includegraphics[width=0.316\hsize,trim=6mm 6mm 6mm 6mm,clip]{Spell Cards/#1.png}}}
+\renewcommand\card[1]{{\includegraphics[height=0.26\vsize,trim=6mm 6mm 6mm 6mm,clip]{Spell Cards/#1.png}}}
+
+
+\newdimen\myspace
+\myspace=10pt
+
+\newcommand\nospaces{%
+  \spaceskip=\myspace plus \myspace minus \myspace
+  \xspaceskip=\myspace plus \myspace minus \myspace
+%  \fontdimen2\font=0pt
+  \baselineskip=\myspace
+  \lineskip=\myspace
+}
+
+\begin{document}
+\raggedright
+
+
+
+
+%\includegraphics[width=5.75in]{downloaded-images/gh2-plagueherald.jpeg}
+
+
+
+\nospaces
+
+\card{Druidcraft}
+%\card{Guidance}
+\card{Mending}
+\card{Poison Spray}
+\card{Produce Flame}
+\card{Resistance}
+\card{Shillelagh}
+\card{Thorn Whip}
+
+\vspace*{1in}
+
+\card{Animal Friendship}
+\card{Charm Person}
+\card{Create or Destroy Water}
+\card{Cure Wounds}
+\card{Detect Magic}
+\card{Detect Poison and Disease}
+\card{Entangle}
+\card{Faerie Fire}
+\card{Fog Cloud}
+\card{Goodberry}
+\card{Healing Word}
+\card{Jump}
+\card{Longstrider}
+\card{Purify Food and Drink}
+\card{Speak with Animals}
+\card{Thunderwave}
+
+
+
+%%  \card{Bane}
+%%  \card{Bless}
+%%  \card{Burning Hands}
+%%  \card{Cure Wounds}
+%%  \card{Fire Bolt}
+%%  \card{Guiding Bolt}
+%%  \card{Inflict Wounds}
+%%  \card{Light}
+%%  \card{Magic Missile}
+%%  \card{Ray of Frost}
+%%  \card{Sacred Flame}
+%%  \card{Shield}
+%%  \card{Shocking Grasp}
+%%  \card{Spare the Dying}
+%%  \card{Thunderwave}
+%%  \begin{minipage}[t]{0.22\hsize}
+%%  %\vbox to 0pt{
+%%  %
+%%  %
+%%  %\vspace*{0.9\hsize}
+%%  %\noindent
+%%  %\hspace*{0.62\hsize}{
+%%  \fbox{\parbox[b]{0.99\hsize}{%
+%%  \emph{Minor Blessing}
+%%  \raggedright
+%%  
+%%  Casting time: one action.
+%%  
+%%  One touched creature gains~+2 to attack rolls until the end of your
+%%  next turn.
+%%  }}
+%%  \end{minipage}
+
+
+
+
+
+%%
+%%\card{Light}
+%%\card{Mending}
+%%%\card{Minor Blessing}
+%%\card{Bless}
+%%\card{Cure Wounds}
+%%\card{Guiding Bolt}
+%%\card{Healing Word}
+%%\card{Sanctuary}
+%%\card{Shield of Faith}
+%%
+%%
+%%
+%%
+%%%\clearpage
+%%
+%%\card{Fire Bolt}
+%%\card{Light}
+%%\card{Ray of Frost}
+%%\card{Shocking Grasp}
+%%\card{Burning Hands}
+%%\card{Magic Missile}
+%%
+%%%
+%%%\card{Friends}
+%%%\card{Ray of Frost}
+%%%\card{Vicious Mockery}
+%%%\card{Bane}
+%%%\card{Comprehend Languages}
+%%%\card{Healing Word}
+%%%\card{Heroism}
+%%%
+%%%\clearpage
+%%%
+%%%\card{Light}
+%%%\card{Sacred Flame}
+%%%\card{Bless}
+%%%\card{Cure Wounds}
+%%%\card{Divine Favor}
+%%%\card{Shield of Faith}
+%%%
+%%%\clearpage
+%%%
+%%%\card{Fire Bolt}
+%%%\card{Light}
+%%%\card{Mage Hand}
+%%%\card{Burning Hands}
+%%%\card{Detect Magic}
+%%%\card{Identify}
+%%%\card{Mage Armor}
+%%%\card{Magic Missile}
+%%%
+
+\end{document}
