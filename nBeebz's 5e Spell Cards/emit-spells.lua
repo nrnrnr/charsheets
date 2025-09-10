@@ -37,11 +37,20 @@ end
 
 --------------------------------------------------------------------------
 
-local flags = require 'flags'
-local fields = flags.parser()
+local fields = (require 'flags').parser()
   :output_file('output as o'):help('output file (.tex or .pdf)')
   :string_list('exclude as x'):help('exclude spell (case-sensitive; repeat)')
   :numarg(2)
+  :usage_opt_arg('CLASS LEVEL')
+  :usage_post([[
+Examples:
+  emit-spells.lua Druid 1
+  emit-spells.lua Druid 1 -o druid.tex
+  emit-spells.lua Druid 1 -o druid.pdf
+  emit-spells.lua Druid 1 -x "Fog Cloud" -x "Sleep"
+Environment:
+  EXCLUDED_SPELLS=Name1,Name2   additional excludes (comma-separated)
+]])
   :parse(arg)
 
 local CLASS, LEVELSTR = arg[1], arg[2]
@@ -101,26 +110,29 @@ local function is_clean_name(name)
   return name:match("^[A-Za-z '%-]+$") ~= nil  -- allow hyphen just in case
 end
 
--- Collect known spells for validation and groups in order: Cantrips, then 1..LEVEL
-local known_spells = {}
+-- Collect all known spells across all classes to validate excludes globally
+local all_spells = {}
 do
-  for k, v in pairs(class_tbl) do
-    if (k == 'Cantrips' or type(k) == 'number') and type(v) == 'table' then
-      for _, name in ipairs(v) do known_spells[tostring(name)] = true end
+  for _, class in pairs(doc) do
+    if type(class) == 'table' then
+      for k, v in pairs(class) do
+        if (k == 'Cantrips' or type(k) == 'number') and type(v) == 'table' then
+          for _, name in ipairs(v) do all_spells[tostring(name)] = true end
+        end
+      end
     end
   end
 end
 
--- Validate excludes are known spell names (case-sensitive)
+-- Validate excludes are known spell names anywhere in YAML (case-sensitive)
 do
   local unknown = {}
   for name, _ in pairs(exclude_set) do
-    if not known_spells[name] then table.insert(unknown, name) end
+    if not all_spells[name] then table.insert(unknown, name) end
   end
   if #unknown > 0 then
     table.sort(unknown)
-    dief("Unknown spell(s) on exclusion list for %s: %s\n",
-         CLASS, table.concat(unknown, ", "))
+    dief("Unknown spell(s) on exclusion list: %s\n", table.concat(unknown, ", "))
   end
 end
 
@@ -180,9 +192,8 @@ if #suspicious > 0 then
   for _, n in ipairs(suspicious) do eprintf("  %s\n", n) end
 end
 if #missing_cards > 0 then
-  eprintf("Warning: no card image found under %s for:\n", CARDS_DIR)
   table.sort(missing_cards, cmp)
-  for _, n in ipairs(missing_cards) do eprintf("  %s\n", n) end
+  dief("Missing spell card PNG under %s for: %s\n", CARDS_DIR, table.concat(missing_cards, ", "))
 end
 
 local function emit_cards_only()
