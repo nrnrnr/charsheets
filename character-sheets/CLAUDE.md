@@ -1,32 +1,41 @@
-# CLAUDE.md
+# Overall guidance
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-Whenever I ask Claude to tackle a substantial coding task, whether it's new code or an edit, Claude should first pause, think of what questions it has or what assumptions it may be making, then ask those questions.  Basically just treat any significant request as being followed by "But first, what questions do you have?"
+The user always prefers simple solutions with minimal dependencies.
 
-## Repository Overview
+The user hates repetitive and near-repetitive code.  When possible, eliminate or reduce such code by using table-driven approaches and first-class functions.
 
-This is a D&D character sheet generation system that converts YAML character data into professional LaTeX-typeset character sheets. The system consists of:
+Whenever the users asks Claude to tackle a substantial coding task, whether it's new code or an edit, Claude should first pause, think of what questions it has or what assumptions it may be making, then ask those questions.  Basically, treat any significant request as being followed by "But first, what questions do you have?"
 
-- **YAML character data files** (*.yaml) - Human-readable character definitions
-- **LaTeX style package** (charsheet.sty) - Provides custom macros and styling for character sheets
-- **Lua conversion scripts** (charsheet) - Convert YAML to LaTeX macro calls
-- **Template file** (caster.tex) - Defines character-sheet layout
+## This project
 
-## Core Architecture
+We're working on a D&D character sheet generation system that converts YAML character data into professional LaTeX-typeset character sheets. The system consists of:
 
-### YAML to LaTeX Workflow
+- `charsheet.sty` LaTeX package: declares every variable that may
+  appear in YAML, using either `\newDND` or `\newDNDitems`.  Also
+  contains a plethora of macros used to query variables and render
+  character sheets.  As well as custom shapes for TikZ.
 
-1. **Character data** is defined in YAML files with standardized keys (CHARACTER NAME, CLASS & LEVEL, STR, DEX, etc.)
-2. **Lua scripts** parse YAML and generate LaTeX macro calls (\setDND{key}{value})
-3. **LaTeX templates** use these macros to render formatted character sheets
-4. **pdflatex** compiles the final PDF character sheets
+    The core macros are as follows:
 
-### Key Components
+    - `\setDND{key}{value}` - Set character data
+    - `\setDNDfont{field}{font}` - Set font for specific fields
+    - `\addDNDitem[<weight>]{<category>}{<item>}` - Add an item of equipment to a list
+    - `\dndkeys{key1={val1},key2={val2}}` - Specify keyword properties, as for attacks
+    - `\described{name}{description}` - For features and spells
+    - `\spellslevel[numslots]{level}` - Gives level of spells that are to follow, with optionally the number of slots of that level
 
-- `charsheet` - Main Lua script for full character sheet conversion
-- `charsheet.sty` - LaTeX package with character sheet styling and macros
-- Template file (caster.tex, which is symlinked to silverpine.tex) - Character sheet layout
+
+- `YAML.md`: documentation that defines the meaning and format of every variable declared in `charsheet.sty`.
+
+- `charsheet` script: Reads YAML data, supplement where needed by adding missing fields, and renders the data into the variables declared in `charsheet.sty`.
+
+- `caster.tex` and `3col.tex`: two alternative styles for rendering character sheets.  `caster.tex` is the primary style; it looks good and has been exercised significantly.  `3col.tex` is still in the prototype stage.
+
+- `QUICKSTART.yaml`: documentation that uses examples of valid YAML files to help human creators get started. The background colors in the quick-start guide match the corresponding colors used defined in `charsheet.sty` and used in `caster.tex`.
+
+- `character-form.html`: A web form, plus JavaScript, that provides a means of creating a character sheet by filling in the form, without knowing the YAML.  This form includes a button that forwards YAML to a web service that is backed by the `charsheet` script.  **Important:** The form must send the YAML data raw, and the form just trust the server's response, complete with headers.  It must never try to capture or massage the server's response.  Let the browser take care of it.
 
 ### Ancillary components
 
@@ -66,37 +75,11 @@ pdflatex dm-sheet.tex
 pdflatex filename.tex
 ```
 
-## YAML Character Format
-
-Character data uses standardized keys:
-
-### Required Fields
-- `"CHARACTER NAME"`, `"CLASS & LEVEL"`, `"RACE"`, `"BACKGROUND"`
-- Ability scores: `STR`, `DEX`, `CON`, `INT`, `WIS`, `CHA`
-- `"PROFICIENCY BONUS"`, `"ARMOR CLASS"`, `"MAX HP"`, etc.
-
-### Structured Data
-- `PROFICIENCIES` - List of strings, supports special skip markers
-- `EQUIPMENT` - List of equipment items
-- `ATTACKS` - List with NAME, ATTACK, DAMAGE, TYPE, RANGE, AMMO keys
-- `MAGIC` - Spells with level markers and name/description pairs
-- `FEATURES` - Character features with name/description pairs
-
-### Special Conventions
-- Proficiency bonus auto-adds + if missing
-- Class determines saving throw proficiencies automatically
-- Font settings use `"FIELD FONT"` pattern (e.g., `"MAGIC FONT": "\\small"`)
-
 ## LaTeX Style System
 
 The `charsheet.sty` package provides:
 
 ### Core Macros
-- `\setDND{key}{value}` - Set character data
-- `\setDNDfont{field}{font}` - Set font for specific fields
-- `\dndkeys{key1={val1},key2={val2}}` - For attack records
-- `\described{name}{description}` - For features/spells
-- `\spellslevel{level}` - Spell level headers
 
 ### Visual Elements
 - TikZ-based decorative boxes with rounded corners
@@ -106,7 +89,6 @@ The `charsheet.sty` package provides:
 ### Layout Components
 - Responsive column layouts
 - Automatic text wrapping and spacing
-- Professional typography with Times font
 
 ## File Naming Conventions
 
@@ -128,49 +110,14 @@ Never use `nth-child` in CSS.  At need, invent a new class and label the child.
 
 ## Common Troubleshooting
 
-- Ensure all YAML files use double quotes for keys with spaces
+- Ensure all YAML files use double quotes for keys that have spaces
 - Check that ability scores are numeric
-- Verify template files exist in the templates directory (default: current directory)
-- LaTeX compilation errors often indicate missing packages or malformed macro calls
 
-## Markdown output
+## Markdown documentation
 
-We'll be using Pandoc Markdown with HTML extensions.  Outputs should include a title using the opening `%` sign, and the body should be wrapped in <article>...</article>, which will provide a hook for CSS.
+Documentation is written using Pandoc Markdown with HTML extensions.  Outputs should include a title using the opening `%` sign, and the body should be wrapped in <article>...</article>, which will provide a hook for CSS.
 
 The Markdown should include a Pandoc metadata block with the `article` and `body` tags from `/home/nr/cs/106/server/www/course.css`.
-
-
-
-# Key parts of the system
-
- 1. Documentation: An alphabetical guide to all YAML keys (YAML.md).  The entry for each key says what it means, whether it is meaningfully usable on a character sheet, and whether it is optional or required on a character sheet, and whether it may be empty.  The entry also gives one or two examples of how the key can be used.
-
- 2. `charsheet` script: fills in some missing entries in a YAML file, turns YAML into TeX definitions used in `caster.tex`.
- 
- 3. `caster.tex`: specifies typography, color, and layout for a PDF a character sheet.  Uses definitions emitted by `charsheet`.
-
- 4. `charsheet.sty`: the core latex macros used in caster.tex.
-
- 5. Documentation: A quick-start guide to the YAML, aimed at readers
-    who may write or edit YAML by hand (QUICKSTART.md).  The
-    background colors in the quick-start guide match the corresponding
-    colors used defined in `charsheet.sty` and used in `caster.tex`.
- 
- 6. `character-form.html`: A web form, plus JavaScript, which provides
-    a means of creating a character sheet by filling in the form,
-    without known the YAML.  This form includes a button that forwards
-    YAML to a web service of my design.  The form needs only to trust
-    the server's response, complete with headers.  It must never try
-    to capture or massage the server's response.  Let the browser take
-    care of it.
-    
-    Also, the form must send the YAML data raw, not as a parameter.
-
-### Steps 3-4 Implementation Details
-
-- **Technology preferences**: Simple solutions with minimal dependencies preferred
-- **Color scheme**: Colors defined in `charsheet.sty` (via `\colorlet`) match the colors in generated PDFs
-- **Development environment**: Debian Linux + Apache + full LaTeX toolchain
 
 # What to do when adding a new YAML field
 
@@ -186,7 +133,7 @@ The Markdown should include a Pandoc metadata block with the `article` and `body
 
 ### Web form version markers
 
-Every time `character-form.html` changes, its internal "Version"
+**IMPORTANT**: Every time `character-form.html` changes, its internal "Version"
 string needs to be updated.  Our convention is to name each version
 after a vegetable or other food category.  The next version gets a new
 vegetable with its initial letter advancing by one letter of the
@@ -194,28 +141,21 @@ alphabet.  For example: eggplant could be followed by fennel which
 could be followed by garlic.  If Claude can't think of an appropriate
 food it is OK to skip a difficult letter like X or Z.
 
+### Special treatment of CLASS and LEVEL fields
 
+A character's CLASS and LEVEL fields are expected to be distinct.  However, both the web form and the `charsheet` script must support a legacy format that uses a single `"CLASS & LEVEL"` key to specify CLASS, LEVEL, and possibly BACKGROUND.  The legacy format may be found in existing YAML files.  Any component *reading* the legacy `"CLASS & LEVEL"` key will always parse it into separate fields. And any component *writing* YAML always uses the separate `CLASS` and `LEVEL` format.
 
-### Web Form Changes
+### Web form requirements
 
-The character-form.html web form generates YAML using separate `CLASS` and `LEVEL` fields rather than the combined `"CLASS & LEVEL"` field approach found in existing YAML files. This provides better form usability with dropdowns and number inputs.
-
-When loading existing YAML files that use `"CLASS & LEVEL"`, the form will parse this into separate fields. When saving, it always uses the separate `CLASS` and `LEVEL` format.
-
-How to handle the magic section:
-
-  - An empty sheet or a sheet with no magic should just show the header "Magic (click to open)."  Clicking on it should open.
+An empty sheet or a sheet with no magic should just show the header "Magic (click to open)."  Clicking on it should open.
   
-  - Spells should be segregated by section.
+Spells should be segregated by level, each level in its own section.
+A section is headed either "Cantrips" or "Level N spells (k slots)", where the N is fixed for each level but the k can be filled in by the user in a small textbox.
 
-  - Each section should be headed either "Cantrips" or "Level N spells (k slots)", where the N is fixed for each level but the k can be filled in by the user in a small textbox (just one digit, please).
-
-  - Initially no empty sections should be shown.  And at the end of the last section there should be a box "open level N+1 spells," where "N+1" is as appropriate.  When opened, this section will be empty, and should be succeeded by a button to open level N+2 spells, and so on up through level 9.  There is no level 10 or beyond.
+Initially, no empty magic sections should be shown.  And at the end of the last section there should be a box "open level N+1 spells," where "N+1" is as appropriate.  When opened, this section will be empty, and should be succeeded by a button to open level N+2 spells, and so on up through spell level 9.  There are no spells of level 10 or beyond.
   
 
 ## Troubleshooting
 
 ### PDF Generation "Failed to fetch" Error
 If the character form's "Generate PDF" button gives a "Failed to fetch" error, remind the user that this commonly happens when accessing the form via a `file://` URL instead of through a web server. The PDF generation requires HTTP/HTTPS to make fetch requests to the server endpoint. The form must be served through a web server (like Apache) for the PDF generation to work properly.
-
-- every time you update the character form, you need to change its internal version string.
