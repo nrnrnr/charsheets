@@ -42,6 +42,11 @@ We're working on a D&D character sheet generation system that converts YAML char
 - `charinfo` - Lua script for DM info sheets with multiple characters
 - `key-declarations` - Generates \newDND{} declarations for all YAML keys
 
+## Example files
+
+Example YAML files may be found here in `*.yaml` as well as in `/home/nr/etc/dnd/my-adventures/*.yaml`.
+
+
 ## Common Commands
 
 ### Generate a character sheet
