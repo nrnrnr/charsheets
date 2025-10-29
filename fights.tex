@@ -1,0 +1,33 @@
+\documentclass[12pt]{article}
+\usepackage[landscape,top=0.5in,left=0.5in,right=0.5in,bottom=0.1in]{geometry}
+\usepackage{multicol}
+\usepackage{times}
+\columnseprule=0.6pt
+\columnsep=0.5in
+\usepackage{xcolor}
+\colorlet{lt}{black!7!white}
+
+\pagestyle{empty}
+\newcommand\header{%
+  \begin{center}
+  {\Huge \textbf{Time this fight!}}
+  \end{center}
+\medskip
+\sffamily
+  \hbox to \hsize{\huge
+    Start: \textcolor{lt}{00}:\textcolor{lt}{00}
+    \hss
+    Finish: \textcolor{lt}{00}:\textcolor{lt}{00}
+  }
+\vspace*{6.9in}
+}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{multicols}{2}
+\header
+\newcolumn
+\header
+\end{multicols}
+\end{document}
+
