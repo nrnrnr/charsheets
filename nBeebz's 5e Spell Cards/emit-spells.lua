@@ -37,20 +37,22 @@ end
 
 --------------------------------------------------------------------------
 
+local arg0 = arg[0]:gsub('^.*/', '')
+
 local fields = (require 'flags').parser()
   :output_file('output as o'):help('output file (.tex or .pdf)')
   :string_list('exclude as x'):help('exclude spell (case-sensitive; repeat)')
   :numarg(2)
-  :usage_opt_arg('CLASS LEVEL')
-  :usage_post([[
+  :usage_opt_arg('CLASS SPELL-LEVEL')
+  :usage_post(([[
 Examples:
-  emit-spells.lua Druid 1
-  emit-spells.lua Druid 1 -o druid.tex
-  emit-spells.lua Druid 1 -o druid.pdf
-  emit-spells.lua Druid 1 -x "Fog Cloud" -x "Sleep"
+  emit-spells.lua Druid 1 
+  emit-spells.lua -o druid.tex Druid 1 
+  emit-spells.lua -o druid.pdf Druid 1 
+  emit-spells.lua -x "Fog Cloud" -x "Sleep" Druid 1 
 Environment:
   EXCLUDED_SPELLS=Name1,Name2   additional excludes (comma-separated)
-]])
+]]):gsub('emit%-spells%.lua', arg0))
   :parse(arg)
 
 local CLASS, LEVELSTR = arg[1], arg[2]
